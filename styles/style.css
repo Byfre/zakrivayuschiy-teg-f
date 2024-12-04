@@ -13,8 +13,365 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
+.container {
+  width: var(--page-content-width);
+}
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-family-main);
+  font-size: 18px;
+  line-height: 21px;
+  font-variation-settings: "wght" var(--font-weight-normal);
+  color: var(--accent-color);
+  background-image: var(--bg-gradient);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  background-color: transparent;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0%);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px var(--accent-color);
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem) 0 18px 0;
+  align-items: center;
+  margin: 100px 0 100px 0;
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+}
+
+.header__logo {
+  font-family: var(--font-family-accent);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.header__title {
+  font-family: var(--font-family-accent);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-left: 18px;
+}
+
+.theme-menu__button {
+  position: relative;
+  font-family: var(--font-family-accent);
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  top: 0;
+  left: -15px;
+  animation: menu-arrow 0.5s infinite ease-in-out alternate;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.3s ease-in-out;
+}
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+}
+
+.card__title {
+  font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-title);
+  line-height: 21.78px;
+  padding: 4px 10px;
+}
+
+.card__image-wrapper {
+  position: relative;
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.card__logo {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  right: clamp(0.6875rem, 0.3794rem + 1.3146vw, 1.5625rem);
+  font-family: var(--font-family-accent);
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--accent-color);
+  text-shadow: -1px 0 var(--label-stroke-color), 0 1px var(--label-stroke-color),
+    1px 0 var(--label-stroke-color), 0 -1px var(--label-stroke-color);
+  mix-blend-mode: hard-light;
+}
+
+@supports (
+  (text-stroke: 1px var(--label-stroke-color)) or
+    (-webkit-text-stroke: 1px var(--label-stroke-color))
+) {
+  .card__logo {
+    -webkit-text-stroke: 1px var(--label-stroke-color);
+    text-stroke: 1px var(--label-stroke-color);
+    text-shadow: none;
+  }
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 27px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.card__text {
+  font-variation-settings: "wght" var(--font-weight-content);
+}
+
+.card__buttons-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 4px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  cursor: pointer;
+
+  padding: 0;
+  border: 2px solid transparent;
+  height: 39px;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border: 2px solid var(--accent-color);
+  transition: border 0.3s ease;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+.card__like-button {
+  padding: 8px;
+  min-width: 130px;
+}
+
+.button__text {
+  font-family: var(--font-family-accent);
+  font-size: 14px;
+  line-height: 12.6px;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 52px;
+  padding-bottom: 100px;
+}
+
+.footer__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 8px;
+  background-color: var(--bg-color);
+
+  @media (width > 375px) {
+    flex-direction: row;
+  }
+}
+
+.button__icon {
+  mix-blend-mode: difference;
+  color: var(--button-text-color);
+  width: 28px;
+  height: 28px;
+  @media (width > 375px) {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* Modal */
+
+.popup {
+  width: 100%;
+  max-width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+  padding: 30px 39px;
+  row-gap: 30px;
+  column-gap: 20px;
+  color: var(--accent-color);
+  @media (width > 375px) {
+    padding: 30px;
+  }
+}
+
+.popup[open] {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+
+.popup::backdrop {
+  background: #000000;
+  opacity: 0.75;
+}
+
+.popup__icon {
+  grid-column: 1 / 2;
+  align-self: center;
+}
+
+.popup__title {
+  grid-column: 2 / 3;
+  font-family: var(--font-family-accent);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.popup__button {
+  grid-column: 1 / 3;
+  padding: 12px 35px;
+  @media (width > 375px) {
+    padding: 8px 35px;
+  }
+}
+
+/* Card image filters */
+
+.card__image--blur {
+  filter: blur(2px);
+}
+
+.card__image--brightness {
+  filter: brightness(75%);
+}
+
+.card__image--contrast {
+  filter: contrast(150%);
+}
+
+.card__image--hue-rotate {
+  filter: hue-rotate(90deg);
+}
+
+.card__image--invert {
+  filter: invert(25%);
+}
+
+.card__image--opacity {
+  filter: opacity(70%);
+}
+
+.card__image--sepia {
+  filter: sepia(50%);
+}
+
+.card__image--saturate-blur {
+  filter: saturate(150%) blur(3px);
 }
