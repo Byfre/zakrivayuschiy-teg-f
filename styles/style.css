@@ -78,7 +78,7 @@
 .header__logo {
   font-family: var(--font-family-accent);
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
-  font-variation-settings: "wght" 400;
+  font-weight: 400;
   line-height: 100%;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -87,7 +87,7 @@
 .header__title {
   font-family: var(--font-family-accent);
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-  font-variation-settings: "wght" 400;
+  font-weight: 400;
   line-height: 100%;
   text-transform: uppercase;
   margin-bottom: 25px;
@@ -103,7 +103,7 @@
 .theme-menu__button {
   position: relative;
   font-family: var(--font-family-accent);
-  font-variation-settings: "wght" 400;
+  font-weight: 400;
   font-size: 14px;
   line-height: 14px;
   text-transform: uppercase;
@@ -258,7 +258,7 @@
 
 .button__text {
   font-family: var(--font-family-accent);
-  font-variation-settings: "wght" 400;
+  font-weight: 400;
   font-size: 14px;
   line-height: 12.6px;
   color: var(--button-text-color);
